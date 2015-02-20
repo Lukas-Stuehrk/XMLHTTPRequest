@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   version = "1.3">
+   <BuildAction>
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForRunning = "YES"
+            buildForTesting = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C753EB163B9ED73A5A6101E6"
+               BuildableName = "XMLHTTPRequestTests.xctest"
+               BlueprintName = "XMLHTTPRequestTests"
+               ReferencedContainer = "container:XMLHTTPRequest.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      buildConfiguration = "Debug">
+      <Testables>
+         <TestableReference>
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C753EB163B9ED73A5A6101E6"
+               BuildableName = "XMLHTTPRequestTests.xctest"
+               BlueprintName = "XMLHTTPRequestTests"
+               ReferencedContainer = "container:XMLHTTPRequest.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
+   </TestAction>
+   <LaunchAction
+      useCustomWorkingDirectory = "NO">
+   </LaunchAction>
+</Scheme>
