@@ -4,11 +4,11 @@
 
 
 NS_ENUM(NSUInteger , ReadyState) {
-    UNSENT=0,	// open()has not been called yet.
-    OPENED,	    // send()has not been called yet.
-    HEADERS,    // RECEIVED	send() has been called, and headers and status are available.
-    LOADING,    // Downloading; responseText holds partial data.
-    DONE	    // The operation is complete.
+    XMLHttpRequestUNSENT =0,	// open()has not been called yet.
+    XMLHTTPRequestOPENED,	    // send()has not been called yet.
+    XMLHTTPRequestHEADERS,      // RECEIVED	send() has been called, and headers and status are available.
+    XMLHTTPRequestLOADING,      // Downloading; responseText holds partial data.
+    XMLHTTPRequestDONE          // The operation is complete.
 };
 
 @protocol XMLHttpRequest <JSExport>

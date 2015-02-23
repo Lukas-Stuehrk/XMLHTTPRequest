@@ -111,9 +111,9 @@ SPEC_BEGIN(XMLHttpRequestTests)
 
         it(@"should set the correct readystate", ^{
             MKTArgumentCaptor *argument = [MKTArgumentCaptor new];
-            [[request.readyState should] equal:@(UNSENT)];
+            [[request.readyState should] equal:@(XMLHttpRequestUNSENT)];
             [jsContext evaluateScript:@"request.open('GET', 'http://example.com');"];
-            [[request.readyState should] equal:@(OPENED)];
+            [[request.readyState should] equal:@(XMLHTTPRequestOPENED)];
             [jsContext evaluateScript:@"request.send()"];
             [verify(urlSession) dataTaskWithRequest:anything()
                                   completionHandler:[argument capture]];
@@ -123,7 +123,7 @@ SPEC_BEGIN(XMLHttpRequestTests)
                                                                 headerFields:@{}];
             void (^completionBlock)(NSData *, NSURLResponse *, NSError *) = [argument value];
             completionBlock([NSData new], response, nil);
-            [[request.readyState should] equal:@(DONE)];
+            [[request.readyState should] equal:@(XMLHTTPRequestDONE)];
         });
 
         it(@"should set the correct response text", ^{

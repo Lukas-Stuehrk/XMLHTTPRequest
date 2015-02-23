@@ -26,7 +26,7 @@
 - (instancetype)initWithURLSession:(NSURLSession *)urlSession {
     if (self = [super init]) {
         _urlSession = urlSession;
-        self.readyState = @(UNSENT);
+        self.readyState = @(XMLHttpRequestUNSENT);
         _requestHeaders = [NSMutableDictionary new];
     }
     return self;
@@ -38,11 +38,11 @@
     jsContext[@"XMLHTTPRequest"] = ^{
         return self;
     };
-    jsContext[@"XMLHTTPRequest"][@"UNSENT"] = @(UNSENT);
-    jsContext[@"XMLHTTPRequest"][@"OPENED"] = @(OPENED);
-    jsContext[@"XMLHTTPRequest"][@"LOADING"] = @(LOADING);
-    jsContext[@"XMLHTTPRequest"][@"HEADERS"] = @(HEADERS);
-    jsContext[@"XMLHTTPRequest"][@"DONE"] = @(DONE);
+    jsContext[@"XMLHTTPRequest"][@"UNSENT"] = @(XMLHttpRequestUNSENT);
+    jsContext[@"XMLHTTPRequest"][@"OPENED"] = @(XMLHTTPRequestOPENED);
+    jsContext[@"XMLHTTPRequest"][@"LOADING"] = @(XMLHTTPRequestLOADING);
+    jsContext[@"XMLHTTPRequest"][@"HEADERS"] = @(XMLHTTPRequestHEADERS);
+    jsContext[@"XMLHTTPRequest"][@"DONE"] = @(XMLHTTPRequestDONE);
 
 }
 
@@ -51,7 +51,7 @@
     _httpMethod = httpMethod;
     _url = [NSURL URLWithString:url];
     _async = async;
-    self.readyState = @(OPENED);
+    self.readyState = @(XMLHTTPRequestOPENED);
 }
 
 - (void)send:(id)data {
@@ -68,7 +68,7 @@
 
     id completionHandler = ^(NSData *receivedData, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-        weakSelf.readyState = @(DONE); // TODO
+        weakSelf.readyState = @(XMLHTTPRequestDONE); // TODO
         weakSelf.status = @(httpResponse.statusCode);
         weakSelf.responseText = [[NSString alloc] initWithData:receivedData
                                                   encoding:NSUTF8StringEncoding];
