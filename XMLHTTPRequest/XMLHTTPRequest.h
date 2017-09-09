@@ -3,7 +3,7 @@
 #import <JavaScriptCore/JavaScriptCore.h>
 
 
-NS_ENUM(NSUInteger , ReadyState) {
+typedef NS_ENUM(NSUInteger , ReadyState) {
     XMLHttpRequestUNSENT =0,	// open()has not been called yet.
     XMLHTTPRequestOPENED,	    // send()has not been called yet.
     XMLHTTPRequestHEADERS,      // RECEIVED	send() has been called, and headers and status are available.
