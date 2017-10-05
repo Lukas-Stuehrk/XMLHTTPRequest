@@ -1,4 +1,4 @@
-#import "XMLHttpRequest.h"
+#import "XMLHTTPRequest.h"
 
 
 @implementation XMLHttpRequest {
