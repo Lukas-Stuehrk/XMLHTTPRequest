@@ -35,14 +35,14 @@
 - (void)extend:(id)jsContext {
 
     // Simulate the constructor.
-    jsContext[@"XMLHTTPRequest"] = ^{
+    jsContext[@"XMLHttpRequest"] = ^{
         return self;
     };
-    jsContext[@"XMLHTTPRequest"][@"UNSENT"] = @(XMLHttpRequestUNSENT);
-    jsContext[@"XMLHTTPRequest"][@"OPENED"] = @(XMLHTTPRequestOPENED);
-    jsContext[@"XMLHTTPRequest"][@"LOADING"] = @(XMLHTTPRequestLOADING);
-    jsContext[@"XMLHTTPRequest"][@"HEADERS"] = @(XMLHTTPRequestHEADERS);
-    jsContext[@"XMLHTTPRequest"][@"DONE"] = @(XMLHTTPRequestDONE);
+    jsContext[@"XMLHttpRequest"][@"UNSENT"] = @(XMLHttpRequestUNSENT);
+    jsContext[@"XMLHttpRequest"][@"OPENED"] = @(XMLHttpRequestOPENED);
+    jsContext[@"XMLHttpRequest"][@"LOADING"] = @(XMLHttpRequestLOADING);
+    jsContext[@"XMLHttpRequest"][@"HEADERS"] = @(XMLHttpRequestHEADERS);
+    jsContext[@"XMLHttpRequest"][@"DONE"] = @(XMLHttpRequestDONE);
 
 }
 
@@ -51,7 +51,7 @@
     _httpMethod = httpMethod;
     _url = [NSURL URLWithString:url];
     _async = async;
-    self.readyState = @(XMLHTTPRequestOPENED);
+    self.readyState = @(XMLHttpRequestOPENED);
 }
 
 - (void)send:(id)data {
@@ -68,7 +68,7 @@
 
     id completionHandler = ^(NSData *receivedData, NSURLResponse *response, NSError *error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-        weakSelf.readyState = @(XMLHTTPRequestDONE); // TODO
+        weakSelf.readyState = @(XMLHttpRequestDONE); // TODO
         weakSelf.status = @(httpResponse.statusCode);
         weakSelf.responseText = [[NSString alloc] initWithData:receivedData
                                                   encoding:NSUTF8StringEncoding];

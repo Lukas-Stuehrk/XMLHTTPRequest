@@ -22,21 +22,21 @@ SPEC_BEGIN(XMLHttpRequestTests)
         });
 
         it(@"should be a constructor", ^{
-            JSValue *object = [jsContext evaluateScript:@"new XMLHTTPRequest()"];
+            JSValue *object = [jsContext evaluateScript:@"new XMLHttpRequest()"];
             [[[jsContext exception] should] beNil];
             [[object should] beNonNil];
         });
 
         it(@"should provide all the constants", ^{
-            [[[jsContext evaluateScript:@"XMLHTTPRequest.UNSENT"] should] equal:[JSValue valueWithInt32:0
+            [[[jsContext evaluateScript:@"XMLHttpRequest.UNSENT"] should] equal:[JSValue valueWithInt32:0
                                                                                               inContext:jsContext]];
-            [[[jsContext evaluateScript:@"XMLHTTPRequest.OPENED"] should] equal:[JSValue valueWithInt32:1
+            [[[jsContext evaluateScript:@"XMLHttpRequest.OPENED"] should] equal:[JSValue valueWithInt32:1
                                                                                               inContext:jsContext]];
-            [[[jsContext evaluateScript:@"XMLHTTPRequest.HEADERS"] should] equal:[JSValue valueWithInt32:2
+            [[[jsContext evaluateScript:@"XMLHttpRequest.HEADERS"] should] equal:[JSValue valueWithInt32:2
                                                                                                inContext:jsContext]];
-            [[[jsContext evaluateScript:@"XMLHTTPRequest.LOADING"] should] equal:[JSValue valueWithInt32:3
+            [[[jsContext evaluateScript:@"XMLHttpRequest.LOADING"] should] equal:[JSValue valueWithInt32:3
                                                                                                inContext:jsContext]];
-            [[[jsContext evaluateScript:@"XMLHTTPRequest.DONE"] should] equal:[JSValue valueWithInt32:4
+            [[[jsContext evaluateScript:@"XMLHttpRequest.DONE"] should] equal:[JSValue valueWithInt32:4
                                                                                             inContext:jsContext]];
 
         });
@@ -49,7 +49,7 @@ SPEC_BEGIN(XMLHttpRequestTests)
             jsContext = [JSContext new];
             XMLHttpRequest *xmlHttpRequest = [XMLHttpRequest new];
             [xmlHttpRequest extend:jsContext];
-            [jsContext evaluateScript:@"var request = new XMLHTTPRequest();"];
+            [jsContext evaluateScript:@"var request = new XMLHttpRequest();"];
         });
 
         it(@"should exist", ^{
@@ -77,7 +77,7 @@ SPEC_BEGIN(XMLHttpRequestTests)
             jsContext = [JSContext new];
             XMLHttpRequest *xmlHttpRequest = [[XMLHttpRequest alloc] initWithURLSession:urlSession];
             [xmlHttpRequest extend:jsContext];
-            [jsContext evaluateScript:@"var request = new XMLHTTPRequest();"];
+            [jsContext evaluateScript:@"var request = new XMLHttpRequest();"];
             request = [jsContext[@"request"] toObject];
         });
 
@@ -113,7 +113,7 @@ SPEC_BEGIN(XMLHttpRequestTests)
             MKTArgumentCaptor *argument = [MKTArgumentCaptor new];
             [[request.readyState should] equal:@(XMLHttpRequestUNSENT)];
             [jsContext evaluateScript:@"request.open('GET', 'http://example.com');"];
-            [[request.readyState should] equal:@(XMLHTTPRequestOPENED)];
+            [[request.readyState should] equal:@(XMLHttpRequestOPENED)];
             [jsContext evaluateScript:@"request.send()"];
             [verify(urlSession) dataTaskWithRequest:anything()
                                   completionHandler:[argument capture]];
@@ -123,7 +123,7 @@ SPEC_BEGIN(XMLHttpRequestTests)
                                                                 headerFields:@{}];
             void (^completionBlock)(NSData *, NSURLResponse *, NSError *) = [argument value];
             completionBlock([NSData new], response, nil);
-            [[request.readyState should] equal:@(XMLHTTPRequestDONE)];
+            [[request.readyState should] equal:@(XMLHttpRequestDONE)];
         });
 
         it(@"should set the correct response text", ^{

@@ -5,10 +5,10 @@
 
 typedef NS_ENUM(NSUInteger , ReadyState) {
     XMLHttpRequestUNSENT =0,	// open()has not been called yet.
-    XMLHTTPRequestOPENED,	    // send()has not been called yet.
-    XMLHTTPRequestHEADERS,      // RECEIVED	send() has been called, and headers and status are available.
-    XMLHTTPRequestLOADING,      // Downloading; responseText holds partial data.
-    XMLHTTPRequestDONE          // The operation is complete.
+    XMLHttpRequestOPENED,	    // send()has not been called yet.
+    XMLHttpRequestHEADERS,      // RECEIVED	send() has been called, and headers and status are available.
+    XMLHttpRequestLOADING,      // Downloading; responseText holds partial data.
+    XMLHttpRequestDONE          // The operation is complete.
 };
 
 @protocol XMLHttpRequest <JSExport>
