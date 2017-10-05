@@ -3,16 +3,16 @@
 In iOS 7, Apple introduced the possibility to [execute JavaScript via the JavaScriptCore JavaScript 
 engine] (http://nshipster.com/javascriptcore/). Unfortunately, JavaScriptCore is missing some 
 objects and functions a JavaScript environment of a browser would have. Especially the
-`XMLHTTPRequest` (see the [Mozilla documentation]
-(https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) object needed for AJAX reqeuests 
+`XMLHttpRequest` (see the [Mozilla documentation]
+(https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) object needed for AJAX requests
 is not provided by JavaScriptCore. This library implements this missing object, so it is possible to 
 use JavaScript libraries which were originally developed for in-browser use in your Objective-C 
 (or Swift) application without the need to use a hidden WebView.
  
  
 ## Provided functions
-This library tries to implement the full XMLHTTPRequest specification. Curently not all
-funcionality is implemented yet. The current limitations are:
+This library tries to implement the full XMLHttpRequest specification. Currently not all
+functionality is implemented yet. The current limitations are:
 
 * Synchronous calls are not supported.
 * The `onload` and `onerror` callbacks are currently not supported.
