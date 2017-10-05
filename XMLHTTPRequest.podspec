@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = "XMLHTTPRequest"
-  s.version          = "0.1.0"
-  s.summary          = "An implementation of the JavaScript XMLHTTPRequest object to extend JavaScriptCore."
+  s.version          = "0.1.1"
+  s.summary          = "An implementation of the JavaScript XMLHttpRequest object to extend JavaScriptCore."
   s.description      = <<-DESC
                         In iOS 7, Apple introduced the possibility to [execute JavaScript via the JavaScriptCore JavaScript
                         engine] (http://nshipster.com/javascriptcore/). Unfortunately, JavaScriptCore is missing some
