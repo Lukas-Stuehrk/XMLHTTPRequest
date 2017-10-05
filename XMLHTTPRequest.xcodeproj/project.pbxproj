@@ -168,11 +168,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C753E94003C4FBBB89D49ABF /* Build configuration list for PBXNativeTarget "XMLHTTPRequestTests" */;
 			buildPhases = (
-				0A5C0F1CF12FD49AAC4DA2C1 /* Check Pods Manifest.lock */,
+				0A5C0F1CF12FD49AAC4DA2C1 /* [CP] Check Pods Manifest.lock */,
 				C753E1749E5CEC1C300A20A0 /* Sources */,
 				C753EC5BCD581523B2686082 /* Frameworks */,
 				C753E5336ACF3EF5DB0A8103 /* Resources */,
-				C12B1D8608E97BBCB999E062 /* Copy Pods Resources */,
+				C12B1D8608E97BBCB999E062 /* [CP] Copy Pods Resources */,
+				DF4BA301CE250C15AB8A159E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -229,34 +230,52 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0A5C0F1CF12FD49AAC4DA2C1 /* Check Pods Manifest.lock */ = {
+		0A5C0F1CF12FD49AAC4DA2C1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-XMLHTTPRequestTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C12B1D8608E97BBCB999E062 /* Copy Pods Resources */ = {
+		C12B1D8608E97BBCB999E062 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XMLHTTPRequestTests/Pods-XMLHTTPRequestTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF4BA301CE250C15AB8A159E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XMLHTTPRequestTests/Pods-XMLHTTPRequestTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
