@@ -12,19 +12,23 @@ typedef NS_ENUM(NSUInteger , ReadyState) {
 };
 
 @protocol XMLHttpRequest <JSExport>
+@property (nonatomic) NSString *response;
 @property (nonatomic) NSString *responseText;
+@property (nonatomic) NSString *responseType;
 @property (nonatomic) JSValue *onreadystatechange;
 @property (nonatomic) NSNumber *readyState;
 @property (nonatomic) JSValue *onload;
 @property (nonatomic) JSValue *onerror;
 @property (nonatomic) NSNumber *status;
+@property (nonatomic) NSString *statusText;
 
 
 -(void)open:(NSString *)httpMethod :(NSString *)url :(bool)async;
 -(void)send:(id)data;
 -(void)setRequestHeader: (NSString *)name :(NSString *)value;
 -(NSString *)getAllResponseHeaders;
--(NSString *)getReponseHeader:(NSString *)name;
+-(NSString *)getResponseHeader:(NSString *)name;
+
 @end
 
 

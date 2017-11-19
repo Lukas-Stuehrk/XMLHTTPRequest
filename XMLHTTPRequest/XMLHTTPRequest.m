@@ -10,12 +10,15 @@
     NSDictionary *_responseHeaders;
 };
 
+@synthesize response;
 @synthesize responseText;
+@synthesize responseType;
 @synthesize onreadystatechange;
 @synthesize readyState;
 @synthesize onload;
 @synthesize onerror;
 @synthesize status;
+@synthesize statusText;
 
 
 - (instancetype)init {
@@ -66,12 +69,17 @@
 
     __block __weak XMLHttpRequest *weakSelf = self;
 
-    id completionHandler = ^(NSData *receivedData, NSURLResponse *response, NSError *error) {
-        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+    id completionHandler = ^(NSData *receivedData, NSURLResponse *resp, NSError *error) {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) resp;
         weakSelf.readyState = @(XMLHttpRequestDONE); // TODO
         weakSelf.status = @(httpResponse.statusCode);
+        weakSelf.statusText = [NSString stringWithFormat:@"%ld",httpResponse.statusCode];
         weakSelf.responseText = [[NSString alloc] initWithData:receivedData
                                                   encoding:NSUTF8StringEncoding];
+
+        weakSelf.responseType = @"";
+        weakSelf.response = weakSelf.responseText;
+        
         [weakSelf setAllResponseHeaders:[httpResponse allHeaderFields]];
         if (weakSelf.onreadystatechange != nil) {
             [weakSelf.onreadystatechange callWithArguments:@[]];
@@ -92,12 +100,12 @@
         [responseHeaders appendString:key];
         [responseHeaders appendString:@": "];
         [responseHeaders appendString:_responseHeaders[key]];
-        [responseHeaders appendString:@"\n"];
+        [responseHeaders appendString:@"\r\n"];
     }
     return responseHeaders;
 }
 
-- (NSString *)getReponseHeader:(NSString *)name {
+- (NSString *)getResponseHeader:(NSString *)name {
     return _responseHeaders[name];
 }
 
