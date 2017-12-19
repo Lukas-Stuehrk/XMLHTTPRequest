@@ -60,7 +60,6 @@ SPEC_BEGIN(XMLHttpRequestTests)
         it(@"should raise an error if called with not enough arguments", ^{
             [jsContext evaluateScript:@"request.open()"];
             [[[jsContext exception] should] beNonNil];
-
             [jsContext evaluateScript:@"request.open('POST')"];
             [[[jsContext exception] should] beNonNil];
         });
@@ -156,7 +155,7 @@ SPEC_BEGIN(XMLHttpRequestTests)
             void (^completionBlock)(NSData *, NSURLResponse *, NSError *) = [argument value];
             completionBlock(responseText, response, nil);
             // TODO it's a little bit fragile
-            [[request.getAllResponseHeaders should] equal:@"X-Foo: Bar\nContent-Type: text/html\n"];
+            [[request.getAllResponseHeaders should] equal:@"X-Foo: Bar\r\nContent-Type: text/html\r\n"];
         });
 
         it(@"should return the correct response headers", ^{
@@ -172,7 +171,8 @@ SPEC_BEGIN(XMLHttpRequestTests)
             NSData *responseText = [@"foobar" dataUsingEncoding:NSUTF8StringEncoding];
             void (^completionBlock)(NSData *, NSURLResponse *, NSError *) = [argument value];
             completionBlock(responseText, response, nil);
-            [[[[jsContext evaluateScript:@"request.getReponseHeader('Content-Type');"] toString] should] equal:@"text/html"];
+        
+            [[[[jsContext evaluateScript:@"request.getResponseHeader('Content-Type');"] toString] should] equal:@"text/html"];
         });
 
         it(@"should set the HTTP status code", ^{
