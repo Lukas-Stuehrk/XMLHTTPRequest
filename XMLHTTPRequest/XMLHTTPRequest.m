@@ -69,8 +69,8 @@
 
     __block __weak XMLHttpRequest *weakSelf = self;
 
-    id completionHandler = ^(NSData *receivedData, NSURLResponse *resp, NSError *error) {
-        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) resp;
+    id completionHandler = ^(NSData *receivedData, NSURLResponse *response, NSError *error) {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
         weakSelf.readyState = @(XMLHttpRequestDONE); // TODO
         weakSelf.status = @(httpResponse.statusCode);
         weakSelf.statusText = [NSString stringWithFormat:@"%ld",httpResponse.statusCode];
